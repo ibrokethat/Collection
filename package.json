@@ -10,7 +10,7 @@
     "Object": "git+ssh://git@github.com:ibrokethat/Object",
     "iter": "git+ssh://git@github.com:ibrokethat/iter",
     "registry": "git+ssh://git@github.com:ibrokethat/registry",
-    "sys": "git+ssh://git@github.com:ibrokethat/sys"
+    "system": "git+ssh://git@github.com:ibrokethat/system"
   },
   "devDependencies": {
     "mocha": "1.2.x",
