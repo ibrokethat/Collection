@@ -9,6 +9,7 @@ var registry     = require("registry");
 var system       = require("system");
 var enforce      = require("is").enforce;
 var indexOf      = require("iter").indexOf;
+var generateUuid = require("uuid").generate;
 
 module.exports = EventEmitter.extend({
 
@@ -20,7 +21,7 @@ module.exports = EventEmitter.extend({
       Object.defineProperties(this, {
 
         "id": {
-          value: ""//generateUuid()
+          value: generateUuid()
         },
 
         "type": {

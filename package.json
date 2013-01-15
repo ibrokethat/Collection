@@ -21,7 +21,10 @@
     "type": "git",
     "url": "git@github.com:ibrokethat/Collection"
   },
-  "main": "Collection",
+  "ibrokethat": {
+    "buildClient": true
+  },
+  "main": "Collection.js",
   "scripts": {
     "prepublish" : "npm prune",
     "test": "mocha -u bdd"
