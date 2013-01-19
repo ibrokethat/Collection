@@ -16,24 +16,25 @@ module.exports = EventEmitter.extend({
 
   __init__: {
 
-    value: function (type) {
+    value: function (data) {
 
       Object.defineProperties(this, {
 
         "id": {
-          value: generateUuid()
+          value: data.id
         },
 
         "type": {
-          value: type
+          value: data.type
         },
 
         "_data": {
           value:[]
         },
 
-        "_dropSync": {
-          value: false
+        "_dropsync": {
+          value: false,
+          writable: true
         }
 
       });
@@ -64,10 +65,10 @@ module.exports = EventEmitter.extend({
 
       this.emit("add", {
         item: item,
-        items: this.items
+        collection: this
       });
 
-      if (this._dropSync) return;
+      if (this._dropsync) return;
 
       system.emit("sync", {
         id: this.id,
@@ -96,7 +97,7 @@ module.exports = EventEmitter.extend({
           items: this.items
         });
 
-        if (this._dropSync) return;
+        if (this._dropsync) return;
 
         system.emit("sync", {
           id: this.id,
@@ -125,23 +126,23 @@ module.exports = EventEmitter.extend({
 
     value: function (data) {
 
-      this._dropSync = true;
+      this._dropsync = true;
 
       switch (data.method) {
 
         case "add":
 
-          this.add(data.item);
+          this.add(this.type.spawn(data.item));
           break;
 
         case "remove":
 
-          this.removeById(data.itemId);
+          this.removeById(data.item.id);
           break;
 
       }
 
-      this._dropSync = false;
+      this._dropsync = false;
 
     }
 
