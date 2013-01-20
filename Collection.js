@@ -73,7 +73,7 @@ module.exports = EventEmitter.extend({
       system.emit("sync", {
         id: this.id,
         method: "add",
-        item: item//.serialise()
+        item: item
       });
 
     }
@@ -119,6 +119,7 @@ module.exports = EventEmitter.extend({
       this.remove(registry.get(id));
 
     }
+
   },
 
 
