@@ -73,7 +73,7 @@ module.exports = EventEmitter.extend({
       system.emit("sync", {
         id: this.id,
         method: "add",
-        item: item
+        item: item.serialise()
       });
 
     }
@@ -94,7 +94,7 @@ module.exports = EventEmitter.extend({
 
         this.emit("remove", {
           item: item,
-          items: this.items
+          collection: this
         });
 
         if (this._dropsync) return;
@@ -132,13 +132,13 @@ module.exports = EventEmitter.extend({
       switch (data.method) {
 
         case "add":
-
+          console.log("add: ", data.item.id)
           this.add(this.type.spawn(data.item));
           break;
 
         case "remove":
-
-          this.removeById(data.item.id);
+          console.log("remove: ", data.itemId)
+          this.removeById(data.itemId);
           break;
 
       }
