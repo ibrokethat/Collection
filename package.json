@@ -1,16 +1,15 @@
 {
-  "name": "Collection",
+  "name": "super-collection",
   "description": "Collection object",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "si@ibrokethat.com",
   "contributors": [
     { "name": "Simon Jefford", "email": "si@ibrokethat.com" }
   ],
   "dependencies": {
-    "Object": "git+ssh://git@github.com:ibrokethat/Object",
-    "iter": "git+ssh://git@github.com:ibrokethat/iter",
-    "registry": "git+ssh://git@github.com:ibrokethat/registry",
-    "system": "git+ssh://git@github.com:ibrokethat/system"
+    "super-iter": "x",
+    "super-registry": "x",
+    "super-is": "x"
   },
   "devDependencies": {
     "mocha": "1.2.x",

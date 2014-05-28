@@ -4,14 +4,12 @@
   @description  A collection of objects
 
 */
-var EventEmitter = require("events").EventEmitter;
-var registry     = require("registry");
-var system       = require("system");
-var enforce      = require("is").enforce;
-var indexOf      = require("iter").indexOf;
-var generateUuid = require("uuid").generate;
+var Proto = require('super-proto');
+var registry = require('super-registry');
+var enforce = require('super-is').enforce;
+var indexOf = require('super-iter').indexOf;
 
-module.exports = EventEmitter.extend({
+module.exports = Proto.extend({
 
 
   __init__: {
@@ -70,7 +68,7 @@ module.exports = EventEmitter.extend({
 
       if (this._dropsync) return;
 
-      system.emit("sync", {
+      process.emit("sync", {
         id: this.id,
         method: "add",
         item: item.serialise()
@@ -99,7 +97,7 @@ module.exports = EventEmitter.extend({
 
         if (this._dropsync) return;
 
-        system.emit("sync", {
+        process.emit("sync", {
           id: this.id,
           method: "remove",
           itemId: item.id
