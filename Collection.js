@@ -54,7 +54,6 @@ module.exports = Proto.extend({
   add: {
 
     value: function (item) {
-
       enforce(this.type, item);
 
       Object.defineProperty(this, "_data", Object.create(this._data));
@@ -71,7 +70,7 @@ module.exports = Proto.extend({
       process.emit("sync", {
         id: this.id,
         method: "add",
-        item: item.serialise()
+        item: typeof item.serialise === 'function' ? item.serialise() : item
       });
 
     }
